@@ -1,0 +1,65 @@
+
+version: 2
+
+models:
+  - name: stg_addresses
+    description: "User addresses model"
+    columns:
+      - name: address_guid
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_events
+    description: "Events model"
+    columns:
+      - name: event_guid
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_order_items
+    description: "Order items model"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - order_guid
+            - product_guid
+  
+  - name: stg_orders
+    description: "Orders model"
+    columns:
+      - name: order_guid
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_products
+    description: "Products model"
+    columns:
+      - name: product_guid
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+          
+  - name: stg_promos
+    description: "Promos model"
+    columns:
+      - name: promo_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_users
+    description: "Users model"
+    columns:
+      - name: user_guid
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
