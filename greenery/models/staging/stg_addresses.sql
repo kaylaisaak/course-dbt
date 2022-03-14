@@ -8,7 +8,7 @@ renamed as (
     select 
         address_id as address_guid,
         address,
-        zipcode,
+        to_char(zipcode,'00000') as zipcode,
         state,
         country
 

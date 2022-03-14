@@ -22,4 +22,3 @@ sources:
       - name: products
       - name: promos
       - name: users 
-      - name: superheroes
