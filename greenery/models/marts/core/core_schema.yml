@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: User info including name, contact, and address details. Granularity by user.
+    columns:
+      - name: user_guid
+        description: Primary key. Assumption that each user only has one address.
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: Basic product info with inventory count
+    columns:
+      - name: product_guid
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: inventory_count
+        description: Current inventory count
+        tests:
+          - positive_values
+
+  - name: fact_orders
+    description: Order summary
+    columns:
+      - name: order_guid
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+
+  - name: int_order_events
+    description: Orders with time-related metric calculations
+    columns:
+      - name: checkout_to_ship_hours
+        description: Total time from order checkout to shipped (in hours)
+        tests:
+          - positive_values
+      - name: ship_to_delivery_hours
+        description: Total time from order shipment to delivery (in hours)
+        tests: 
+          - positive_values
+      - name: checkout_to_delivery_hours
+        description: Total time from order checkout to delivery (in hours)
+        tests:
+          - positive_values
+
+  - name: int_user_activity
+    description: All website activity by user
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - user_guid
+            - event_guid

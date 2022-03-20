@@ -9,7 +9,7 @@ renamed as (
         product_id as product_guid,
         name as product_name,
         price,
-        inventory
+        inventory as inventory_count
 
     from source
 )

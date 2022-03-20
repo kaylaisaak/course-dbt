@@ -16,9 +16,22 @@ sources:
 
     tables:
       - name: addresses
+        description: Address master data for users
+
       - name: events
+        description: Site visits by user session
+
       - name: orders
+        description: Order info per user
+
       - name: order_items
+        description: Order line items by product
+
       - name: products
+        description: Product master data
+
       - name: promos
+        description: Promotion master data
+
       - name: users 
+        description: User master data

@@ -8,7 +8,7 @@ renamed as (
     select 
         order_id as order_guid,
         product_id as product_guid,
-        quantity
+        quantity as quantity_ordered
 
     from source
 )

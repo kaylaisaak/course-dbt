@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fact_product_orders
+    description: Order details by product
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - order_guid
+            - product_guid
+
+  - name: fact_product_views
+    description: Page views by product
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - event_guid
+            - product_guid    

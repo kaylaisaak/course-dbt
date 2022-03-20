@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: fact_user_orders
+    description: Order summary by user
+    columns:
+      - name: order_guid
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: checkout_to_ship_hours
+        description: Total time from order checkout to shipped (in hours)
+        tests:
+          - positive_values
+      - name: ship_to_delivery_hours
+        description: Total time from order shipment to delivery (in hours)
+        tests: 
+          - positive_values
+      - name: checkout_to_delivery_hours
+        description: Total time from order checkout to delivery (in hours)
+        tests:
+          - positive_values
+      - name: discount
+        description: Promo discount applied to order
+        tests: 
+          - positive_values
+      - name: order_status
+        description: Status of the order
+        tests:
+          - not_null

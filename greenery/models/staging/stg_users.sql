@@ -12,7 +12,7 @@ renamed as (
         last_name,
         email,
         phone_number,
-        created_at as created_at_utc,
+        created_at as signup_date_utc,
         updated_at as updated_at_utc
         
     from source
