@@ -24,7 +24,8 @@ order_format_hours as (
         case
             when delivered_at_utc > estimated_delivery_at_utc then 'Late'
             else 'On Time'
-        end as on_time_delivery
+        end as on_time_delivery,
+        session_guid
 
     from orders
 ),

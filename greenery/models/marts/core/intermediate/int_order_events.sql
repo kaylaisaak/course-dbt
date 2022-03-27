@@ -8,16 +8,27 @@ events as (
     select * from {{ ref('int_user_activity')}}
 ),
 
-order_checkout as (
+order_by_session as (
 
     select 
         orders.*,
-        events.event_time_utc as checkout_at_utc
-    
-    from 
+        events.session_guid
+    from
         orders
     left outer join events
         on orders.order_guid = events.order_guid
+),
+
+order_checkout as (
+
+    select 
+        order_by_session.*,
+        events.event_time_utc as checkout_at_utc
+    
+    from 
+        order_by_session
+    left outer join events
+        on order_by_session.order_guid = events.order_guid
     
     where events.event_type = 'checkout'
 ),
